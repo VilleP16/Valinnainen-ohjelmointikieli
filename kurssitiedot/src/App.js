@@ -1,52 +1,57 @@
 const App = () => {
   const course = 'Half Stack application development'
-  const part1 = 'Fundamentals of React'
-  const exercises1 = 10
-  const part2 = 'Using props to pass data'
-  const exercises2 = 7
-  const part3 = 'State of a component'
-  const exercises3 = 14
+  const olio1 = {
+    name: 'Fundamentals of React',
+    exercises: 10
+  }
+  const olio2 = {
+    name: 'Using props to pass data',
+    exercises: 7
+  }
+  const olio3 = {
+    name: 'State of a component',
+    exercises: 14
+  }
 
   return (
     <div>
       <Header course={course}/>
       <Content 
-        part1 = {part1} exercises1 = {exercises1}
-        part2 = {part2} exercises2 = {exercises2}
-        part3 = {part3} exercises3 = {exercises3}
+        contentName1 = {olio1.name} contentExercises1 = {olio1.exercises}
+        contentName2 = {olio2.name} contentExercises2 = {olio2.exercises}
+        contentName3 = {olio3.name} contentExercises3 = {olio3.exercises}
       />
       <Total
-        ekaReeni= {exercises1} 
-        tokaReeni = {exercises2} 
-        kolmasReeni = {exercises3}
+        ekaReeni= {olio1.exercises} 
+        tokaReeni = {olio2.exercises} 
+        kolmasReeni = {olio3.exercises}
       />
     </div>
-  )
-}
-
-const Header = (props) =>{
-  return(
-    <h1>{props.course}</h1>
   )
 }
 const Content = (props) => {
   return(
     <>
-      <Part part={props.part1} exercises={props.exercises1}/>
-      <Part part={props.part2} exercises={props.exercises2} />
-      <Part part={props.part3} exercises={props.exercises3} />
+      <Part name={props.contentName1} exercises={props.contentExercises1}/>
+      <Part name={props.contentName2} exercises={props.contentExercises2} />
+      <Part name={props.contentName3} exercises={props.contentExercises3} />
     </>
   )
 }
 const Part = (props) =>{
   return(
-    <p>{props.part} {props.exercises}</p>
+    <p>{props.name} {props.exercises}</p>
 
   )
 }
 const Total = (props)  =>{
   return(
     <p>Number of exercises {props.ekaReeni + props.tokaReeni + props.kolmasReeni}</p>
+  )
+}
+const Header = (props) =>{
+  return(
+    <h1>{props.course}</h1>
   )
 }
 
