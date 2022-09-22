@@ -19,11 +19,6 @@ const App = () => {
         id: 3
       },
       {
-        name: 'Testi',
-        exercises: 99,
-        id: 4
-      },
-      {
         name: 'Testing mapping function',
         exercises: 16,
         id: 5
@@ -45,26 +40,29 @@ const Course = (props) => {
     </>
   )
 }
-const Content = ({course}) => {
-  console.log(course)
+const Content = ({ course }) => {
+  //console.log(course)
 
   return (
-     <div>
+    <div>
       {course.parts.map((part) => {
         return <Part name={part.name} exercises={part.exercises} key={part.id} />
       })}
-    </div> 
+    </div>
   )
 }
 const Part = (props) => {
   return (
     <p>{props.name} {props.exercises}</p>
-
   )
 }
-const Total = (props) => {
+const Total = ({ course }) => {
+  const total = course.parts.reduce((totalValue, currentPartOfTheArray, currentIndex) => {
+    console.log('totalvalue', totalValue, 'currentPartOfTheArray', currentPartOfTheArray, 'currentIndex', currentIndex)
+    return totalValue + currentPartOfTheArray.exercises;
+  },0)
   return (
-    <p>Number of exercises {props.course.parts[0].exercises + props.course.parts[1].exercises + props.course.parts[2].exercises}</p>
+  <p><b>Number of exercises: {total}</b></p>
   )
 }
 const Header = (props) => {
