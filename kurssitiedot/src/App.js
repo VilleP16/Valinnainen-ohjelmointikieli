@@ -1,33 +1,73 @@
 const App = () => {
-  const course = {
-    name: 'Half Stack application development',
-    id: 1,
-    parts: [
-      {
-        name: 'Fundamentals of React',
-        exercises: 10,
-        id: 1
-      },
-      {
-        name: 'Using props to pass data',
-        exercises: 7,
-        id: 2
-      },
-      {
-        name: 'State of a component',
-        exercises: 14,
-        id: 3
-      },
-      {
-        name: 'Testing mapping function',
-        exercises: 16,
-        id: 5
-      }
-    ]
-  }
+  const courses = [
+    {
+      name: 'Half Stack application development',
+      id: 1,
+      parts: [
+        {
+          name: 'Fundamentals of React',
+          exercises: 10,
+          id: 1
+        },
+        {
+          name: 'Using props to pass data',
+          exercises: 7,
+          id: 2
+        },
+        {
+          name: 'State of a component',
+          exercises: 14,
+          id: 3
+        },
+        {
+          name: 'Redux',
+          exercises: 11,
+          id: 4
+        }
+      ]
+    }, 
+    {
+      name: 'Node.js',
+      id: 2,
+      parts: [
+        {
+          name: 'Routing',
+          exercises: 3,
+          id: 1
+        },
+        {
+          name: 'Middlewares',
+          exercises: 7,
+          id: 2
+        }
+      ]
+    },
+    {
+      name: 'PHP rules',
+      id: 3,
+      parts: [
+        {
+          name: 'return [results]',
+          exercises: 30,
+          id: 1
+        },
+        {
+          name: '(Succes == 1 usually)',
+          exercises: 70,
+          id: 2
+        }
+      ]
+    }
+  ]
+  
   return (
     <div>
-      <Course course={course} />
+      {courses.map((course) =>{
+        console.log(course)
+        return <Course course = {course} key = {course.id}/>
+
+      })}
+      
     </div>
   )
 }
@@ -58,7 +98,7 @@ const Part = (props) => {
 }
 const Total = ({ course }) => {
   const total = course.parts.reduce((totalValue, currentPartOfTheArray, currentIndex) => {
-    console.log('totalvalue', totalValue, 'currentPartOfTheArray', currentPartOfTheArray, 'currentIndex', currentIndex)
+    //console.log('totalvalue', totalValue, 'currentPartOfTheArray', currentPartOfTheArray, 'currentIndex', currentIndex)
     return totalValue + currentPartOfTheArray.exercises;
   },0)
   return (
